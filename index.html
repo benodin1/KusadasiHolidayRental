@@ -71,4 +71,47 @@
     background-color: #006699;
 }
 </style>
+<form id="contactForm">
+    <input type="text" id="name" placeholder="Name" required>
+    <input type="email" id="email" placeholder="E-Mail" required>
+    <input type="text" id="wunschzeitraum" placeholder="Wunschzeitraum" required>
+    <textarea id="message" placeholder="Deine Nachricht" required></textarea>
+    <button type="submit">Anfrage senden</button>
+</form>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Verhindert Neuladen der Seite
+    
+    // Telegram Bot Daten
+    let botToken = "7823170734:AAEYR1emTZb0TnoxBAOfEWyI9RJnJaj0HTM";  // HIER DEIN TOKEN EINFÜGEN
+    let chatId = "491940055";    // HIER DEINE CHAT-ID EINFÜGEN
+
+    // Formulardaten abrufen
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let wunschzeitraum = document.getElementById("wunschzeitraum").value;
+    let message = document.getElementById("message").value;
+
+    // Nachricht formatieren
+    let telegramMessage = `📩 *Neue Anfrage!*\n\n👤 *Name:* ${name}\n📧 *E-Mail:* ${email}\n📅 *Wunschzeitraum:* ${wunschzeitraum}\n📝 *Nachricht:* ${message}`;
+    
+    // Telegram API URL
+    let url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(telegramMessage)}&parse_mode=Markdown`;
+
+    // Nachricht senden
+    fetch(url).then(response => {
+        if (response.ok) {
+            alert("Anfrage erfolgreich gesendet!");
+        } else {
+            alert("Fehler beim Senden.");
+        }
+    }).catch(error => {
+        alert("Netzwerkfehler: " + error);
+    });
+});
+</script>
+
+
+
 
