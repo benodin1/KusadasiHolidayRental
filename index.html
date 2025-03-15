@@ -36,13 +36,13 @@
     <div class="container">
         <h2>Exklusive Ferienwohnung in Istanbul</h2>
         <p>Jetzt anfragen – flexibel & diskret!</p>
-        <form>
-            <input type="text" placeholder="Name" required>
-            <input type="email" placeholder="E-Mail" required>
-            <input type="text" placeholder="Wunschzeitraum" required>
-            <textarea placeholder="Nachricht (optional)"></textarea>
-            <button type="submit">Anfrage senden</button>
-        </form>
+        <form action="send.php" method="post">
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="email" name="email" placeholder="E-Mail" required>
+    <input type="text" name="wunschzeitraum" placeholder="Wunschzeitraum" required>
+    <textarea name="message" placeholder="Deine Nachricht" required></textarea>
+    <button type="submit">Anfrage senden</button>
+</form>
         <p>📩 Kontakt: <a href="https://wa.me/DEINE_NUMMER">WhatsApp</a> | <a href="https://t.me/DEIN_TELEGRAM">Telegram</a></p>
     </div>
 </body>
